@@ -6,3 +6,12 @@
 <button>Add task</button>
 <p>{{ task2}}</p>
 
+<div class="task-card">
+    @for (task of taskList; track task.id){
+        @if (isSameUser(task.userId)) {
+            <h3> {{ task.title }} </h3> 
+            <p>{{task.summary}}</p> 
+            <p>{{task.dueDate}}</p>
+        }
+    }
+</div>
