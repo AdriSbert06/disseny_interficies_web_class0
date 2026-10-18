@@ -1,3 +1,4 @@
+
 <h1>Emily's Tasks</h1>
 <button>Add task</button>
 <p>{{ task1}}</p>
@@ -14,4 +15,29 @@
             <p>{{task.dueDate}}</p>
         }
     }
+
 </div>
+
+  @if (newTask) {
+    <app-newtask [userId]="userId" (closeDialog)="onCloseAddTask()"></app-newtask>
+  }
+<section id="tasks">
+  <header>
+    <h2>{{name}}'s Tasks</h2>
+    <menu>
+      <button (click)="onAddComponent()"> Add Task</button>
+    </menu>
+  </header>
+
+  <ul>
+    @for (task of taskList; track task.id){
+        @if (isSameUser(task.userId)) {
+            <h3> {{ task.title }} </h3> 
+            <p>{{task.summary}}</p> 
+            <p>{{task.dueDate}}</p>
+        }
+    }
+  </ul>
+
+</section>
+
