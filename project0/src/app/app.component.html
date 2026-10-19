@@ -1,18 +1,24 @@
-<app-header></app-header>
+<app-header />
 <main>
-  <!-- Loop over the users and draw one selectable button per user -->
-  @for (user of users; track user.id) {
-    <app-user
-      [user]="user"
-      [selected]="user.id === selectedUser?.id"
-      (select)="onSelectUser($event)">
-    </app-user>
-  }
-
-  <!-- Show the tasks only when a user is selected. selectedUser comes from AppComponent. -->
+  <ul id="user">
+    @for (user of users; track user.id){
+      <li>
+        <!--Indica que [user] dentro de user hay un input que espera un valor 
+    (property binding) y le pasamos el valor de user que es el que estamos iterando en el ngFor,
+    el (select) es un output que devuelve un evento (un hijo enviando una señal) y le pasamos la función onSelectedUser 
+    que es la que se ejecuta cuando se emite el evento-->
+      <app-user
+        [user]="user"
+        [selected]="user.id === selectedUser?.id"
+        (select)="onSelectUser($event)"
+      />
+    </li>
+    }
+  </ul>
   @if (selectedUser) {
-    <app-tasks [name]="selectedUser.name" [userId]="selectedUser.id" />
-  } @else {
+    <app-tasks [name]="selectedUser.name" [userId]="selectedUser.id"/>
+  } @else{
     <p id="fallback">Select a user to see their tasks</p>
   }
+
 </main>
