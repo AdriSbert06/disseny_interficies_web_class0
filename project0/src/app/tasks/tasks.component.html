@@ -1,43 +1,18 @@
-
-<h1>Emily's Tasks</h1>
-<button>Add task</button>
-<p>{{ task1}}</p>
-
-<h1>Kevin's Tasks</h1>
-<button>Add task</button>
-<p>{{ task2}}</p>
-
-<div class="task-card">
-    @for (task of taskList; track task.id){
-        @if (isSameUser(task.userId)) {
-            <h3> {{ task.title }} </h3> 
-            <p>{{task.summary}}</p> 
-            <p>{{task.dueDate}}</p>
-        }
-    }
-
-</div>
-
-  @if (newTask) {
-    <app-newtask [userId]="userId" (closeDialog)="onCloseAddTask()"></app-newtask>
-  }
 <section id="tasks">
   <header>
-    <h2>{{name}}'s Tasks</h2>
-    <menu>
-      <button (click)="onAddComponent()"> Add Task</button>
-    </menu>
+    <h2>{{ name }}'s Tasks</h2>
   </header>
 
   <ul>
-    @for (task of taskList; track task.id){
-        @if (isSameUser(task.userId)) {
-            <h3> {{ task.title }} </h3> 
-            <p>{{task.summary}}</p> 
-            <p>{{task.dueDate}}</p>
-        }
+    <!-- One <li> per task that belongs to the selected user.
+         track task.id lets Angular keep each card's DOM when the list changes. -->
+    @for (task of selectedUserTasks; track task.id) {
+      <li>
+        <app-task [task]="task" />
+      </li>
+    } @empty {
+      <!-- Shown when the selected user has no tasks left -->
+      <li>No tasks for this user.</li>
     }
   </ul>
-
 </section>
-

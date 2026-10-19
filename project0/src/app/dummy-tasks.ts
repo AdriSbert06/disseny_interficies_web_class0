@@ -1,0 +1,51 @@
+export const DUMMY_TASKS = [
+  {
+    id: 't1',
+    userId: 'u1',
+    title: 'Prepare project brief',
+    summary: 'Write the initial brief for the new project.',
+    dueDate: '2024-06-30',
+  },
+  {
+    id: 't2',
+    userId: 'u1',
+    title: 'Review project requirements',
+    summary: 'Check the requirements with the team.',
+    dueDate: '2024-07-02',
+  },
+  {
+    id: 't3',
+    userId: 'u2',
+    title: 'Update user documentation',
+    summary: 'Add the latest changes to the user guide.',
+    dueDate: '2024-07-04',
+  },
+  {
+    id: 't4',
+    userId: 'u3',
+    title: 'Plan the sprint',
+    summary: 'Organize the tasks for the next sprint.',
+    dueDate: '2024-07-08',
+  },
+  {
+    id: 't5',
+    userId: 'u4',
+    title: 'Test the new feature',
+    summary: 'Run the feature tests and report any issues.',
+    dueDate: '2024-07-10',
+  },
+  {
+    id: 't6',
+    userId: 'u5',
+    title: 'Prepare presentation',
+    summary: 'Create the slides for the project presentation.',
+    dueDate: '2024-07-12',
+  },
+  {
+    id: 't7',
+    userId: 'u6',
+    title: 'Archive completed work',
+    summary: 'Move completed tasks to the project archive.',
+    dueDate: '2024-07-15',
+  },
+];

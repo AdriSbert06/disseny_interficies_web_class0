@@ -1,11 +1,18 @@
 <app-header></app-header>
 <main>
-    @for(user of users; track user.id){
-        <app-user 
-            [user]="user"
-            [selected] = "user.id === selectedUser?.id"
-            (select)= "onSelectUser($event)">
-        </app-user>
-    }
-<app-tasks></app-tasks>
+  <!-- Loop over the users and draw one selectable button per user -->
+  @for (user of users; track user.id) {
+    <app-user
+      [user]="user"
+      [selected]="user.id === selectedUser?.id"
+      (select)="onSelectUser($event)">
+    </app-user>
+  }
+
+  <!-- Show the tasks only when a user is selected. selectedUser comes from AppComponent. -->
+  @if (selectedUser) {
+    <app-tasks [name]="selectedUser.name" [userId]="selectedUser.id" />
+  } @else {
+    <p id="fallback">Select a user to see their tasks</p>
+  }
 </main>

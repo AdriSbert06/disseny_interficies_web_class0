@@ -1,8 +1,10 @@
 <article>
-  <h2>{{task.title}}</h2>
-  <time>{{task.dueDate | date: 'fullDate' }}</time>
-  <p>{{task.summary}}</p>
+  <h2>{{ task.title }}</h2>
+  <!-- The date pipe turns '2026-12-31' into a readable date, e.g. "Thursday, December 31, 2026" -->
+  <time>{{ task.dueDate | date: 'fullDate' }}</time>
+  <p>{{ task.summary }}</p>
   <p class="actions">
-    <button (click)="onCompleteTask()">Complete</button>
+    <!-- Event binding: runs onDeleteTask() in TaskComponent when clicked -->
+    <button (click)="onDeleteTask()">Delete</button>
   </p>
 </article>
